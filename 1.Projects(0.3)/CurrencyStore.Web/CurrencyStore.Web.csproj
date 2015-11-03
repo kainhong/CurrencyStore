@@ -1,0 +1,814 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E8571761-09AD-4A6D-8840-4DDC2CCC0A3C}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CurrencyStore.Web</RootNamespace>
+    <AssemblyName>CurrencyStore.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <UseIISExpress>false</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <FilesToIncludeForPublish>OnlyFilesToRunTheApp</FilesToIncludeForPublish>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AspNetPager">
+      <HintPath>..\..\2.Library\AspNetPager\AspNetPager.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Caching, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\2.Library\Microsoft.Practices.EnterpriseLibrary.Caching.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Common, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\2.Library\Microsoft.Practices.EnterpriseLibrary.Common.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\2.Library\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\2.Library\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.EnterpriseLibrary.Logging, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\2.Library\Microsoft.Practices.EnterpriseLibrary.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\2.Library\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\2.Library\Microsoft.Practices.Unity.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\2.Library\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception, Version=2.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\..\2.Library\Microsoft.Practices.Unity.Interception.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WebForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\..\2.Library\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DataVisualization" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_File\Download\ChromeSetup.exe" />
+    <Content Include="App_File\Export\Temp.txt" />
+    <Content Include="App_File\Import\Temp.txt" />
+    <Content Include="App_File\Temp\Temp.txt" />
+    <Content Include="App_File\Upload\Temp.txt" />
+    <Content Include="App_Page\Public\CheckCode.aspx" />
+    <Content Include="App_Page\Public\CurrencyImage.aspx" />
+    <Content Include="App_Page\Public\Default.aspx" />
+    <Content Include="App_Page\Public\FileDownload.aspx" />
+    <Content Include="App_Page\Public\UploadTest.aspx" />
+    <Content Include="App_Page\Service\Basic_Dict_Edit.aspx" />
+    <Content Include="App_Page\Service\Basic_Dict_List.aspx" />
+    <Content Include="App_Page\Service\Basic_Logo.aspx" />
+    <Content Include="App_Page\Service\Basic_Org_Edit.aspx" />
+    <Content Include="App_Page\Service\Basic_Org_List.aspx" />
+    <Content Include="App_Page\Service\Basic_Org_Search.aspx" />
+    <Content Include="App_Page\Service\Basic_Parameter.aspx" />
+    <Content Include="App_Page\Service\Css\login.css" />
+    <Content Include="App_Page\Service\Css\basic.css" />
+    <Content Include="App_Page\Service\Css\pagination.css" />
+    <Content Include="App_Page\Service\Css\validate.css" />
+    <Content Include="App_Page\Service\Currency_Blacklist_Edit.aspx" />
+    <Content Include="App_Page\Service\Currency_Blacklist_List.aspx" />
+    <Content Include="App_Page\Service\Currency_Export_List.aspx" />
+    <Content Include="App_Page\Service\Currency_Info_Import.aspx" />
+    <Content Include="App_Page\Service\Currency_Info_List.aspx" />
+    <Content Include="App_Page\Service\Data_Clear.aspx" />
+    <Content Include="App_Page\Service\Device_Change_List.aspx" />
+    <Content Include="App_Page\Service\Device_Info_Edit.aspx" />
+    <Content Include="App_Page\Service\Device_Info_List.aspx" />
+    <Content Include="App_Page\Service\Device_Online_List.aspx" />
+    <Content Include="App_Page\Service\DoubleSubmitTip.html" />
+    <Content Include="App_Page\Service\Home.aspx" />
+    <Content Include="App_Page\Service\IE6Update.html" />
+    <Content Include="App_Page\Service\Image\accordion.png" />
+    <Content Include="App_Page\Service\Image\arrow_left.png" />
+    <Content Include="App_Page\Service\Image\btn_bg.gif" />
+    <Content Include="App_Page\Service\Image\default_user_avatar.gif" />
+    <Content Include="App_Page\Service\Image\delete.png" />
+    <Content Include="App_Page\Service\Image\detail.png" />
+    <Content Include="App_Page\Service\Image\download.png" />
+    <Content Include="App_Page\Service\Image\edit.png" />
+    <Content Include="App_Page\Service\Image\folder.gif" />
+    <Content Include="App_Page\Service\Image\folder_open.gif" />
+    <Content Include="App_Page\Service\Image\foot_bg.gif" />
+    <Content Include="App_Page\Service\Image\header_bg.png" />
+    <Content Include="App_Page\Service\Image\head_bg.gif" />
+    <Content Include="App_Page\Service\Image\head_bg_line.gif" />
+    <Content Include="App_Page\Service\Image\head_logo.png" />
+    <Content Include="App_Page\Service\Image\home.gif" />
+    <Content Include="App_Page\Service\Image\ico-0.png" />
+    <Content Include="App_Page\Service\Image\ico-0_.png" />
+    <Content Include="App_Page\Service\Image\ico-1.png" />
+    <Content Include="App_Page\Service\Image\ico-1_.png" />
+    <Content Include="App_Page\Service\Image\ico-2.png" />
+    <Content Include="App_Page\Service\Image\ico-2_.png" />
+    <Content Include="App_Page\Service\Image\ico-3.png" />
+    <Content Include="App_Page\Service\Image\ico-3_.png" />
+    <Content Include="App_Page\Service\Image\ico-4.png" />
+    <Content Include="App_Page\Service\Image\ico-4_.png" />
+    <Content Include="App_Page\Service\Image\ico-5.png" />
+    <Content Include="App_Page\Service\Image\ico-5_.png" />
+    <Content Include="App_Page\Service\Image\ico-6.png" />
+    <Content Include="App_Page\Service\Image\ico-show-img.png" />
+    <Content Include="App_Page\Service\Image\ico-show-txt.png" />
+    <Content Include="App_Page\Service\Image\icon_asc.gif" />
+    <Content Include="App_Page\Service\Image\icon_attach.png" />
+    <Content Include="App_Page\Service\Image\icon_audit.gif" />
+    <Content Include="App_Page\Service\Image\icon_channel.png" />
+    <Content Include="App_Page\Service\Image\icon_comment.gif" />
+    <Content Include="App_Page\Service\Image\icon_correct.png" />
+    <Content Include="App_Page\Service\Image\icon_del.gif" />
+    <Content Include="App_Page\Service\Image\icon_del2.gif" />
+    <Content Include="App_Page\Service\Image\icon_desc.gif" />
+    <Content Include="App_Page\Service\Image\icon_disable.png" />
+    <Content Include="App_Page\Service\Image\icon_edit.gif" />
+    <Content Include="App_Page\Service\Image\icon_log.png" />
+    <Content Include="App_Page\Service\Image\icon_manaer.png" />
+    <Content Include="App_Page\Service\Image\icon_mark.png" />
+    <Content Include="App_Page\Service\Image\icon_msg.gif" />
+    <Content Include="App_Page\Service\Image\icon_no.png" />
+    <Content Include="App_Page\Service\Image\icon_plugin.png" />
+    <Content Include="App_Page\Service\Image\icon_setting.png" />
+    <Content Include="App_Page\Service\Image\icon_site.gif" />
+    <Content Include="App_Page\Service\Image\icon_templet.png" />
+    <Content Include="App_Page\Service\Image\icon_user.png" />
+    <Content Include="App_Page\Service\Image\icon_view.gif" />
+    <Content Include="App_Page\Service\Image\ie_update.jpg" />
+    <Content Include="App_Page\Service\Image\li_bg.gif" />
+    <Content Include="App_Page\Service\Image\loading.gif" />
+    <Content Include="App_Page\Service\Image\loading2.gif" />
+    <Content Include="App_Page\Service\Image\login_banner.jpg" />
+    <Content Include="App_Page\Service\Image\login_bg.gif" />
+    <Content Include="App_Page\Service\Image\login_bg.png" />
+    <Content Include="App_Page\Service\Image\login_btn_bg.gif" />
+    <Content Include="App_Page\Service\Image\login_content_bg.png" />
+    <Content Include="App_Page\Service\Image\login_header_bg.png" />
+    <Content Include="App_Page\Service\Image\login_list.png" />
+    <Content Include="App_Page\Service\Image\login_logo.png" />
+    <Content Include="App_Page\Service\Image\login_sub.png" />
+    <Content Include="App_Page\Service\Image\login_title.png" />
+    <Content Include="App_Page\Service\Image\memeber.gif" />
+    <Content Include="App_Page\Service\Image\menu_icons.gif" />
+    <Content Include="App_Page\Service\Image\msg.png" />
+    <Content Include="App_Page\Service\Image\msg_bg.png" />
+    <Content Include="App_Page\Service\Image\msg_icon.gif" />
+    <Content Include="App_Page\Service\Image\nav_icon.gif" />
+    <Content Include="App_Page\Service\Image\noimg.gif" />
+    <Content Include="App_Page\Service\Image\order_speed.gif" />
+    <Content Include="App_Page\Service\Image\search.png" />
+    <Content Include="App_Page\Service\Image\select.png" />
+    <Content Include="App_Page\Service\Image\style.css" />
+    <Content Include="App_Page\Service\Image\t.gif" />
+    <Content Include="App_Page\Service\Image\tools_bg.gif" />
+    <Content Include="App_Page\Service\Image\tools_btn_bg.gif" />
+    <Content Include="App_Page\Service\Image\tools_icon.gif" />
+    <Content Include="App_Page\Service\Image\upbtn_bg.gif" />
+    <Content Include="App_Page\Service\Image\upfile_bg.gif" />
+    <Content Include="App_Page\Service\Image\user_toolbar.gif" />
+    <Content Include="App_Page\Service\Image\validate_bg.gif" />
+    <Content Include="App_Page\Service\Index.aspx" />
+    <Content Include="App_Page\Service\Login.aspx" />
+    <Content Include="App_Page\Service\ModifyPwd.aspx" />
+    <Content Include="App_Page\Service\NoPermission.html" />
+    <Content Include="App_Page\Service\Script\function.js" />
+    <Content Include="App_Page\Service\Script\jquery\jquery-1.3.2.min.js" />
+    <Content Include="App_Page\Service\Script\jquery\jquery-1.5.2.min.js" />
+    <Content Include="App_Page\Service\Script\jquery\jquery.form.js" />
+    <Content Include="App_Page\Service\Script\jquery\jquery.Jcrop.min.js" />
+    <Content Include="App_Page\Service\Script\jquery\jquery.jqzoom.js" />
+    <Content Include="App_Page\Service\Script\jquery\jquery.KinSlideshow-1.2.1.min.js" />
+    <Content Include="App_Page\Service\Script\jquery\jquery.metadata.js" />
+    <Content Include="App_Page\Service\Script\jquery\jquery.pagination.js" />
+    <Content Include="App_Page\Service\Script\jquery\jquery.validate.min.js" />
+    <Content Include="App_Page\Service\Script\jquery\messages_cn.js" />
+    <Content Include="App_Page\Service\Script\My97DatePicker\calendar.js" />
+    <Content Include="App_Page\Service\Script\My97DatePicker\lang\en.js" />
+    <Content Include="App_Page\Service\Script\My97DatePicker\lang\zh-cn.js" />
+    <Content Include="App_Page\Service\Script\My97DatePicker\lang\zh-tw.js" />
+    <Content Include="App_Page\Service\Script\My97DatePicker\skin\datePicker.gif" />
+    <Content Include="App_Page\Service\Script\My97DatePicker\skin\default\datepicker.css" />
+    <Content Include="App_Page\Service\Script\My97DatePicker\skin\default\img.gif" />
+    <Content Include="App_Page\Service\Script\My97DatePicker\skin\WdatePicker.css" />
+    <Content Include="App_Page\Service\Script\My97DatePicker\skin\whyGreen\bg.jpg" />
+    <Content Include="App_Page\Service\Script\My97DatePicker\skin\whyGreen\datepicker.css" />
+    <Content Include="App_Page\Service\Script\My97DatePicker\skin\whyGreen\img.gif" />
+    <Content Include="App_Page\Service\Script\My97DatePicker\WdatePicker.js" />
+    <Content Include="App_Page\Service\Script\My97DatePicker\开发包\lang\en.js" />
+    <Content Include="App_Page\Service\Script\My97DatePicker\开发包\lang\zh-cn.js" />
+    <Content Include="App_Page\Service\Script\My97DatePicker\开发包\lang\zh-tw.js" />
+    <Content Include="App_Page\Service\Script\My97DatePicker\开发包\readme.txt" />
+    <Content Include="App_Page\Service\Script\My97DatePicker\开发包\skin\datePicker.gif" />
+    <Content Include="App_Page\Service\Script\My97DatePicker\开发包\skin\default\datepicker.css" />
+    <Content Include="App_Page\Service\Script\My97DatePicker\开发包\skin\default\img.gif" />
+    <Content Include="App_Page\Service\Script\My97DatePicker\开发包\skin\WdatePicker.css" />
+    <Content Include="App_Page\Service\Script\My97DatePicker\开发包\skin\whyGreen\bg.jpg" />
+    <Content Include="App_Page\Service\Script\My97DatePicker\开发包\skin\whyGreen\datepicker.css" />
+    <Content Include="App_Page\Service\Script\My97DatePicker\开发包\skin\whyGreen\img.gif" />
+    <Content Include="App_Page\Service\Script\ui\js\ligerBuild.min.js" />
+    <Content Include="App_Page\Service\Script\ui\js\ligerBuild.source.js" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\css\ligerui-all.css" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\css\ligerui-common.css" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\css\ligerui-dialog.css" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\css\ligerui-form.css" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\css\ligerui-grid.css" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\css\ligerui-layout.css" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\css\ligerui-menu.css" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\css\ligerui-tab.css" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\css\ligerui-tree.css" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\box\box-btn-done.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\box\box-btn-error.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\box\box-btn-l-over.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\box\box-btn-l.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\box\box-btn-over.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\box\box-btn-question.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\box\box-btn-r-over.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\box\box-btn-r.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\box\box-btn-warn.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\box\box-btn.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\box\box-close-over.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\box\box-close.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\box\box-lefttop.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\box\box-righttop.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\box\box-top.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\box\tabs-item-left-bg.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\common\loading.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\dialog\dialog-bc.png" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\dialog\dialog-bl.png" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\dialog\dialog-br.png" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\dialog\dialog-button.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\dialog\dialog-button.png" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\dialog\dialog-cl.png" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\dialog\dialog-close.png" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\dialog\dialog-cr.png" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\dialog\dialog-done.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\dialog\dialog-error.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\dialog\dialog-icons.png" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\dialog\dialog-question.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\dialog\dialog-tc.png" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\dialog\dialog-title-icon.png" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\dialog\dialog-tl.png" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\dialog\dialog-tr.png" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\dialog\dialog-warn.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\dialog\ie6\dialog-bc.png" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\dialog\ie6\dialog-cl.png" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\dialog\ie6\dialog-cr.png" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\dialog\ie6\dialog-tc.png" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\form\verify-corner.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\grid\box-lefttop.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\grid\box-righttop.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\grid\grid-checkbox-checked.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\grid\grid-checkbox.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\grid\grid-detail-close.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\grid\grid-detail-open.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\grid\grid-line.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\grid\grid-tree-close.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\grid\grid-tree-open.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\grid\header-bg-over.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\grid\header-bg.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\grid\header2-bg.jpg" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\grid\loading.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\grid\popup-line.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\grid\popup-row-over.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\grid\popup-row-over.png" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\icon\bar-button-over.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\icon\checkbox-checked.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\icon\checkbox.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\icon\icon-close-over.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\icon\icon-close.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\icon\icon-close18X18.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\icon\icon-done.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\icon\icon-down.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\icon\icon-drop.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\icon\icon-edited.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\icon\icon-first.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\icon\icon-last.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\icon\icon-line.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\icon\icon-load.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\icon\icon-load.png" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\icon\icon-milestone.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\icon\icon-next.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\icon\icon-prev.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\icon\icon-remark15X15.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\icon\icon-sort-asc.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\icon\icon-sort-desc.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\icon\icon-up.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\icon\icon-warn.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\icon\magnifier.png" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\layout\accordion-content.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\layout\accordion-header-over.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\layout\accordion-header.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\layout\layout-header-over.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\layout\layout-header.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\layout\layout-sidebar-header.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\layout\mini-bottom.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\layout\mini-left.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\layout\mini-right.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\layout\mini-top.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\layout\panel-content.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\layout\panel-header-over.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\layout\panel-header.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\layout\tabs-bg.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\layout\tabs-item-bg.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\layout\tabs-item-left-bg.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\layout\tabs-item-over-bg.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\layout\tabs-item-right-bg.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\layout\tabs-tools.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\layout\togglebar.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\menu\menu-item-arrow.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\menu\menu-item-down.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\menu\menu-item-over-l.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\menu\menu-item-over-m.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\menu\menu-item-over-r.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\menu\menu-line-x.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\menu\menu-line-y.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\panel\bar-bg.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\panel\header-bg.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\panel\header-bg.jpg" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\panel\header2-bg.jpg" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\panel\panel-btn-l.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\panel\panel-btn-r.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\panel\panel-btn.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\panel\panel-header.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\panel\panel-menu-item-down.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\panel\panel-menu.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\panel\panel-menu.jpg" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\panel\panel-toolbar.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\panel\panel-toolbar.jpg" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\panel\panel-tools-sprites.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\panel\panel-tools.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\tree\folder-open.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\tree\folder.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\tree\loading.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\tree\tree-leaf.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\tree\tree-level.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\tree\tree-noline.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\tree\tree-status-close.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\tree\tree-status-open.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\tree\tree-status.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\tree\tree.gif" />
+    <Content Include="App_Page\Service\Script\ui\skins\Aqua\images\tree\tree.png" />
+    <Content Include="App_Page\Service\Stat_Currency_List.aspx" />
+    <Content Include="App_Page\Service\Stat_Device_List.aspx" />
+    <Content Include="App_Page\Service\Stat_Org_Detail.aspx" />
+    <Content Include="App_Page\Service\Stat_Org_Detail2.aspx" />
+    <Content Include="App_Page\Service\Stat_Org_List.aspx" />
+    <Content Include="App_Page\Service\User_Info_Edit.aspx" />
+    <Content Include="App_Page\Service\User_Info_List.aspx" />
+    <Content Include="App_Page\Service\User_Login_List.aspx" />
+    <Content Include="App_Page\Service\User_Role_Edit.aspx" />
+    <Content Include="App_Page\Service\User_Role_List.aspx" />
+    <Content Include="Default.aspx" />
+    <Content Include="favicon.ico" />
+    <Content Include="Global.asax" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Class\PageDebugModule.cs" />
+    <Compile Include="App_Class\ResponseFilter.cs" />
+    <Compile Include="App_Class\ServiceBasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Class\WebControlExtension.cs" />
+    <Compile Include="App_Page\Public\CheckCode.aspx.cs">
+      <DependentUpon>CheckCode.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Public\CheckCode.aspx.designer.cs">
+      <DependentUpon>CheckCode.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Public\CurrencyImage.aspx.cs">
+      <DependentUpon>CurrencyImage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Public\CurrencyImage.aspx.designer.cs">
+      <DependentUpon>CurrencyImage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Public\Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Public\Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Public\FileDownload.aspx.cs">
+      <DependentUpon>FileDownload.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Public\FileDownload.aspx.designer.cs">
+      <DependentUpon>FileDownload.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Public\UploadTest.aspx.cs">
+      <DependentUpon>UploadTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Public\UploadTest.aspx.designer.cs">
+      <DependentUpon>UploadTest.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\Basic_Dict_Edit.aspx.cs">
+      <DependentUpon>Basic_Dict_Edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\Basic_Dict_Edit.aspx.designer.cs">
+      <DependentUpon>Basic_Dict_Edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\Basic_Dict_List.aspx.cs">
+      <DependentUpon>Basic_Dict_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\Basic_Dict_List.aspx.designer.cs">
+      <DependentUpon>Basic_Dict_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\Basic_Logo.aspx.cs">
+      <DependentUpon>Basic_Logo.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\Basic_Logo.aspx.designer.cs">
+      <DependentUpon>Basic_Logo.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\Basic_Org_Edit.aspx.cs">
+      <DependentUpon>Basic_Org_Edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\Basic_Org_Edit.aspx.designer.cs">
+      <DependentUpon>Basic_Org_Edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\Basic_Org_List.aspx.cs">
+      <DependentUpon>Basic_Org_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\Basic_Org_List.aspx.designer.cs">
+      <DependentUpon>Basic_Org_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\Basic_Org_Search.aspx.cs">
+      <DependentUpon>Basic_Org_Search.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\Basic_Org_Search.aspx.designer.cs">
+      <DependentUpon>Basic_Org_Search.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\Basic_Parameter.aspx.cs">
+      <DependentUpon>Basic_Parameter.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\Basic_Parameter.aspx.designer.cs">
+      <DependentUpon>Basic_Parameter.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\Currency_Blacklist_Edit.aspx.cs">
+      <DependentUpon>Currency_Blacklist_Edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\Currency_Blacklist_Edit.aspx.designer.cs">
+      <DependentUpon>Currency_Blacklist_Edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\Currency_Blacklist_List.aspx.cs">
+      <DependentUpon>Currency_Blacklist_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\Currency_Blacklist_List.aspx.designer.cs">
+      <DependentUpon>Currency_Blacklist_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\Currency_Export_List.aspx.cs">
+      <DependentUpon>Currency_Export_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\Currency_Export_List.aspx.designer.cs">
+      <DependentUpon>Currency_Export_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\Currency_Info_Import.aspx.cs">
+      <DependentUpon>Currency_Info_Import.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\Currency_Info_Import.aspx.designer.cs">
+      <DependentUpon>Currency_Info_Import.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\Currency_Info_List.aspx.cs">
+      <DependentUpon>Currency_Info_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\Currency_Info_List.aspx.designer.cs">
+      <DependentUpon>Currency_Info_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\Data_Clear.aspx.cs">
+      <DependentUpon>Data_Clear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\Data_Clear.aspx.designer.cs">
+      <DependentUpon>Data_Clear.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\Device_Change_List.aspx.cs">
+      <DependentUpon>Device_Change_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\Device_Change_List.aspx.designer.cs">
+      <DependentUpon>Device_Change_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\Device_Info_Edit.aspx.cs">
+      <DependentUpon>Device_Info_Edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\Device_Info_Edit.aspx.designer.cs">
+      <DependentUpon>Device_Info_Edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\Device_Info_List.aspx.cs">
+      <DependentUpon>Device_Info_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\Device_Info_List.aspx.designer.cs">
+      <DependentUpon>Device_Info_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\Device_Online_List.aspx.cs">
+      <DependentUpon>Device_Online_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\Device_Online_List.aspx.designer.cs">
+      <DependentUpon>Device_Online_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\EditPage.Master.cs">
+      <DependentUpon>EditPage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\EditPage.Master.designer.cs">
+      <DependentUpon>EditPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\Home.aspx.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\Home.aspx.designer.cs">
+      <DependentUpon>Home.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\Index.aspx.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\Index.aspx.designer.cs">
+      <DependentUpon>Index.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\ListPage.Master.cs">
+      <DependentUpon>ListPage.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\ListPage.Master.designer.cs">
+      <DependentUpon>ListPage.Master</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\Login.aspx.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\Login.aspx.designer.cs">
+      <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\ModifyPwd.aspx.cs">
+      <DependentUpon>ModifyPwd.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\ModifyPwd.aspx.designer.cs">
+      <DependentUpon>ModifyPwd.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\Stat_Currency_List.aspx.cs">
+      <DependentUpon>Stat_Currency_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\Stat_Currency_List.aspx.designer.cs">
+      <DependentUpon>Stat_Currency_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\Stat_Device_List.aspx.cs">
+      <DependentUpon>Stat_Device_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\Stat_Device_List.aspx.designer.cs">
+      <DependentUpon>Stat_Device_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\Stat_Org_Detail.aspx.cs">
+      <DependentUpon>Stat_Org_Detail.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\Stat_Org_Detail.aspx.designer.cs">
+      <DependentUpon>Stat_Org_Detail.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\Stat_Org_Detail2.aspx.cs">
+      <DependentUpon>Stat_Org_Detail2.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\Stat_Org_Detail2.aspx.designer.cs">
+      <DependentUpon>Stat_Org_Detail2.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\Stat_Org_List.aspx.cs">
+      <DependentUpon>Stat_Org_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\Stat_Org_List.aspx.designer.cs">
+      <DependentUpon>Stat_Org_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\User_Info_Edit.aspx.cs">
+      <DependentUpon>User_Info_Edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\User_Info_Edit.aspx.designer.cs">
+      <DependentUpon>User_Info_Edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\User_Info_List.aspx.cs">
+      <DependentUpon>User_Info_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\User_Info_List.aspx.designer.cs">
+      <DependentUpon>User_Info_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\User_Login_List.aspx.cs">
+      <DependentUpon>User_Login_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\User_Login_List.aspx.designer.cs">
+      <DependentUpon>User_Login_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\User_Role_Edit.aspx.cs">
+      <DependentUpon>User_Role_Edit.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\User_Role_Edit.aspx.designer.cs">
+      <DependentUpon>User_Role_Edit.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Page\Service\User_Role_List.aspx.cs">
+      <DependentUpon>User_Role_List.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="App_Page\Service\User_Role_List.aspx.designer.cs">
+      <DependentUpon>User_Role_List.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="App_Report\ReportData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ReportData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Default.aspx.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Default.aspx.designer.cs">
+      <DependentUpon>Default.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Content Include="App_Page\Public\Web.config" />
+    <Content Include="App_Page\Service\Web.config" />
+    <Content Include="App_Page\Service\ListPage.Master" />
+    <Content Include="App_Page\Service\EditPage.Master" />
+    <Content Include="App_File\Download\Web.config" />
+    <None Include="App_Page\Service\Script\My97DatePicker\WdatePicker.js.bak" />
+    <None Include="App_Page\Service\Script\ui\skins\Aqua\images\common\Thumbs.db" />
+    <None Include="App_Page\Service\Script\ui\skins\Aqua\images\dialog\ie6\Thumbs.db" />
+    <None Include="App_Page\Service\Script\ui\skins\Aqua\images\dialog\Thumbs.db" />
+    <None Include="App_Page\Service\Script\ui\skins\Aqua\images\form\Thumbs.db" />
+    <None Include="App_Page\Service\Script\ui\skins\Aqua\images\grid\Thumbs.db" />
+    <None Include="App_Page\Service\Script\ui\skins\Aqua\images\icon\Thumbs.db" />
+    <None Include="App_Page\Service\Script\ui\skins\Aqua\images\layout\tab.psd" />
+    <None Include="App_Page\Service\Script\ui\skins\Aqua\images\layout\tabs-tools.psd" />
+    <None Include="App_Page\Service\Script\ui\skins\Aqua\images\menu\Thumbs.db" />
+    <None Include="App_Page\Service\Script\ui\skins\Aqua\images\panel\Thumbs.db" />
+    <None Include="App_Page\Service\Script\ui\skins\Aqua\images\tree\Thumbs.db" />
+    <None Include="App_Page\Service\Script\ui\skins\Aqua\images\tree\tree.psd" />
+    <None Include="App_Report\ReportData.xsc">
+      <DependentUpon>ReportData.xsd</DependentUpon>
+    </None>
+    <None Include="App_Report\ReportData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>ReportData.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="App_Report\ReportData.xss">
+      <DependentUpon>ReportData.xsd</DependentUpon>
+    </None>
+    <None Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+    <None Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CurrencyStore.Business\CurrencyStore.Business.csproj">
+      <Project>{F3864268-6540-4ADD-B7D9-C892383D7831}</Project>
+      <Name>CurrencyStore.Business</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CurrencyStore.Common\CurrencyStore.Common.csproj">
+      <Project>{DDAC0530-4A56-4B9D-8EB2-0467C976D748}</Project>
+      <Name>CurrencyStore.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CurrencyStore.Communication\CurrencyStore.Communication.csproj">
+      <Project>{90883D28-E25C-43CD-B647-7823FE6A3EB4}</Project>
+      <Name>CurrencyStore.Communication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CurrencyStore.DataConvert\CurrencyStore.DataConvert.csproj">
+      <Project>{AE2D8C32-D5C5-47E4-BBCA-394DCAE92F20}</Project>
+      <Name>CurrencyStore.DataConvert</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CurrencyStore.Entity\CurrencyStore.Entity.csproj">
+      <Project>{079F512B-3D85-4C80-9AF1-49B45D9ECDE5}</Project>
+      <Name>CurrencyStore.Entity</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CurrencyStore.Repository\CurrencyStore.Repository.csproj">
+      <Project>{C0916042-68E7-4DBE-8EFF-AD7098F80107}</Project>
+      <Name>CurrencyStore.Repository</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CurrencyStore.Service.Interface\CurrencyStore.Services.Interface.csproj">
+      <Project>{A4DC16D3-FB38-4024-87B0-28DBDA820740}</Project>
+      <Name>CurrencyStore.Services.Interface</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CurrencyStore.Service\CurrencyStore.Services.csproj">
+      <Project>{DB630345-50E3-4A70-9EB1-F72B09053629}</Project>
+      <Name>CurrencyStore.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CurrencyStore.Task\CurrencyStore.Task.csproj">
+      <Project>{FAEE4246-C67D-432B-B59A-C8454A522F41}</Project>
+      <Name>CurrencyStore.Task</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_Report\Stat_Org_Detail.rdlc" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>11622</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:6302/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,69 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CurrencyStore.Collector
+{
+    public static class FileWriter
+    {
+        private static object locker = new object();
+        private static string BasePath = @"H:";
+        private static string directory = BasePath + @"\data\";
+
+        static FileWriter()
+        {
+            Create();
+        }
+
+        private static void Create()
+        {
+            if (!Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
+        }
+
+        public static void Write(string deviceNumber, List<CurrencyStore.Entity.CurrencyInfo> list)
+        {
+            lock (locker)
+            {
+                //Task.Factory.StartNew(() =>
+                //{
+                    List<byte> t = new List<byte>();
+
+                    foreach (var i in list)
+                    {
+                        t.AddRange(Encoding.UTF8.GetBytes(i.ToText()));
+                    }
+
+                    var b = t.ToArray();
+
+                    string file = directory + deviceNumber + ".txt";
+                    using (FileStream FS = new FileStream(file, FileMode.Append, FileAccess.Write, FileShare.None, 1024 * 1024 * 1, FileOptions.WriteThrough))
+                    {
+                        //FS.BeginWrite(b, 0, b.Length, new AsyncCallback(WriteDone), FS);
+                        FS.Write(b, 0, b.Length);
+                        FS.Flush();
+                        FS.Close();
+                    }
+                //});
+            }
+        }
+
+        private static void WriteDone(IAsyncResult asr)
+        {
+            using (Stream str = (Stream)asr.AsyncState)
+            {
+                str.Flush();
+
+                //str.EndWrite(asr);
+
+                //str.Close();
+                //str.Dispose();
+            }
+        }
+    }
+}

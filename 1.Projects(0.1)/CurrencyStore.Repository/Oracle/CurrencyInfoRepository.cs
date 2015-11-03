@@ -1,0 +1,219 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Common;
+using System.Linq;
+using System.Text;
+using CurrencyStore.Common;
+using CurrencyStore.Common.ExtensionMethod;
+using CurrencyStore.Common.Query;
+using CurrencyStore.Entity;
+using CurrencyStore.Repository;
+using Oracle.DataAccess.Client;
+using Oracle.DataAccess.Types;
+using CurrencyStore.Common.Configration;
+
+namespace CurrencyStore.Repository.Oracle
+{
+    public class CurrencyInfoRepository : ICurrencyInfoRepository
+    {
+        const string insert = "INSERT INTO tbl_currency_info (OrgId,BatchNumber,DeviceNumber,DeviceKindCode,DeviceModelCode," +
+                               "OperatorNumber,OperateTime,BusinessType,ClientCardNumber,OrderNumber,CurrencyKindCode,FaceAmount,CurrencyVersion,CurrencyType," +
+                               "PortNumber,IsSuspicious,CurrencyNumber,CurrencyImageType,CurrencyImage,IsDuplicate,IsUpload ) ";//VALUES ");
+
+        const string insert_item = "Select {0},'{1}','{2}',{3},{4},{5},to_date('{6}','yyyy-MM-dd HH24:mi:ss'),{7}," +
+                                    "'{8}',{9},{10},{11},{12},{13},{14},{15},'{16}',{17},'{18}',{19},{20} From dual ";
+        ElibLogging logger;
+        private bool storaged;
+        public CurrencyInfoRepository()
+        {
+            logger = new ElibLogging("script");
+            storaged = CurrencyStoreSection.Instance.Task.Storaged;
+        }
+
+        public void BatchSave(List<CurrencyInfo> values)
+        {
+            if (values.Count() > 0)
+            {
+                var script = GetInsertScript(values);
+
+                logger.Info(script);
+
+                if (storaged)
+                    DbHelper.ExecuteNonQuery(script);
+            }
+        }
+        private string GetInsertScript(List<CurrencyInfo> values)
+        {
+            var sb = new StringBuilder();
+            //var items = values.Select(c => GetItemValueScript(c));
+            //var tmp = string.Join("union all \r\n ", items);
+            //if (string.IsNullOrEmpty(tmp))
+            //    return string.Empty;
+            //return "begin \r\n " + tmp + "\r\n end;"
+            sb.Append(insert);
+            for (int i = 0; i < values.Count; i++)
+            {
+                var item = values[i];
+                sb.AppendFormat(insert_item,
+                    item.OrgId,//0
+                    item.BatchNumber,//1
+                    item.DeviceNumber,//2
+                    item.DeviceKindCode,//3
+                    item.DeviceModelCode,//4
+                    item.OperatorNumber,//
+                    item.OperateTime.ToString("yyyy-MM-dd HH:mm:ss"),//6
+                    item.BusinessType,//7
+                    item.ClientCardNumber,
+                    item.OrderNumber,//9
+                    item.CurrencyKindCode,
+                    item.FaceAmount,//11
+                    item.CurrencyVersion,//
+                    item.CurrencyType,//13
+                    item.PortNumber,//14
+                    item.IsSuspicious,//15
+                    item.CurrencyNumber,//16
+                    item.CurrencyImageType,//17
+                    item.CurrencyImage.ToHexString(),//18
+                    item.IsDuplicate,//19
+                    item.IsUpload); //20
+                if (i < values.Count - 1)
+                    sb.Append("union all \r\n");
+            }
+
+            return sb.ToString();
+        }
+        //private string GetItemValueScript(CurrencyInfo item)
+        //{
+
+        //    return string.Format("Select {0},'{1}','{2}',{3},{4},{5},to_date('{6}','yyyy-MM-dd HH24:mi:ss'),{7}," + 
+        //                "'{8}',{9},{10},{11},{12},{13},{14},{15},'{16}',{17},'{18}',{19},{20} From dual ",
+        //        item.OrgId,//0
+        //        item.BatchNumber,//1
+        //        item.DeviceNumber,//2
+        //        item.DeviceKindCode,//3
+        //        item.DeviceModelCode,//4
+        //        item.OperatorNumber,//5
+        //        item.OperateTime.ToString("yyyy-MM-dd HH:mm:ss"),//6
+        //        item.BusinessType,//7
+        //        item.ClientCardNumber,//8
+        //        item.OrderNumber,//9
+        //        item.CurrencyKindCode,//10
+        //        item.FaceAmount,//11
+        //        item.CurrencyVersion,//12
+        //        item.CurrencyType,//13
+        //        item.PortNumber,//14
+        //        item.IsSuspicious,//15
+        //        item.CurrencyNumber,//16
+        //        item.CurrencyImageType,//17
+        //        item.CurrencyImage.ToHexString(),//18
+        //        item.IsDuplicate,//19
+        //        item.IsUpload); //20
+        //}
+
+
+        public void BatchRegister(CurrencyInfo objCurrencyInfo)
+        {
+            string sql = null;
+            List<DbParameter> parameterList = new List<DbParameter>();
+
+            sql = " update tbl_currency_info set OrgId=:OrgId, DeviceKindCode=:DeviceKindCode, DeviceModelCode=:DeviceModelCode " +
+                  " where DeviceNumber=:DeviceNumber and OrgId=0 and DeviceKindCode=0 and DeviceModelCode=0 ";
+
+            parameterList.Add(new OracleParameter(":OrgId", objCurrencyInfo.OrgId));
+            parameterList.Add(new OracleParameter(":DeviceKindCode", objCurrencyInfo.DeviceKindCode));
+            parameterList.Add(new OracleParameter(":DeviceModelCode", objCurrencyInfo.DeviceModelCode));
+            parameterList.Add(new OracleParameter(":DeviceNumber", objCurrencyInfo.DeviceNumber));
+
+            DbHelper.ExecuteNonQuery(sql, CommandType.Text, parameterList.ToArray());
+        }
+        public void DeleteAll()
+        {
+            string sql = null;
+            List<DbParameter> parameterList = new List<DbParameter>();
+
+            sql = " truncate table tbl_currency_info ";
+
+            DbHelper.ExecuteNonQuery(sql, CommandType.Text, parameterList.ToArray());
+        }
+        public void Clear(DateTime beforeTime)
+        {
+            string sql = null;
+            List<DbParameter> parameterList = new List<DbParameter>();
+
+            sql = " delete from tbl_currency_info where OperateTime<:BeforeTime ";
+
+            parameterList.Add(new OracleParameter(":BeforeTime", beforeTime));
+
+            DbHelper.ExecuteNonQuery(sql, CommandType.Text, parameterList.ToArray());
+        }
+        public List<CurrencyInfo> GetList(int orgId, bool isUnknownOrg, string startTime, string endTime, string deviceNumber, string currencyNumber, Pagination paging)
+        {
+            string sql = null;
+            List<DbParameter> parameterList = new List<DbParameter>();
+
+            sql = " select OrgId, BatchNumber, DeviceNumber, DeviceKindCode, DeviceModelCode, OperatorNumber, OperateTime, BusinessType, ClientCardNumber, " +
+                  " OrderNumber, CurrencyKindCode, FaceAmount, CurrencyVersion, CurrencyType, PortNumber, IsSuspicious, CurrencyNumber, CurrencyImageType, CurrencyImage, " +
+                  " IsDuplicate, IsUpload from tbl_currency_info Where 1=1 ";
+
+            if (isUnknownOrg || (!isUnknownOrg && orgId > 0))
+            {
+                sql += " and OrgId=:OrgId ";
+
+                parameterList.Add(new OracleParameter(":OrgId", orgId));
+            }
+
+            if (!isUnknownOrg && orgId == 0)
+            {
+                sql += " and OrgId>0 ";
+            }
+
+            if (startTime.IsNotNullOrEmpty())
+            {
+                sql += " and OperateTime>=to_date(:StartTime,'yyyy-MM-dd HH24:mi:ss') ";
+
+                parameterList.Add(new OracleParameter(":StartTime", startTime));
+            }
+
+            if (endTime.IsNotNullOrEmpty())
+            {
+                sql += " and OperateTime<=to_date(:EndTime,'yyyy-MM-dd HH24:mi:ss') ";
+
+                parameterList.Add(new OracleParameter(":EndTime", endTime));
+            }
+
+            if (deviceNumber.IsNotNullOrEmpty())
+            {
+                sql += " and DeviceNumber=:DeviceNumber ";
+
+                parameterList.Add(new OracleParameter(":DeviceNumber", deviceNumber));
+            }
+
+            if (currencyNumber.IsNotNullOrEmpty())
+            {
+                sql += " and CurrencyNumber like concat(\'%\', {0}, \'%\') ".FormatWith(":CurrencyNumber");
+
+                parameterList.Add(new OracleParameter(":CurrencyNumber", currencyNumber));
+            }
+
+            sql += " order by OperateTime desc, OrderNumber desc ";
+
+            if (paging != null)
+            {
+                return DbHelper.ExecutePagingList<CurrencyInfo>(sql, paging, Convert, parameterList.ToArray());
+            }
+
+            else
+            {
+                return DbHelper.ExecuteList<CurrencyInfo>(sql, Convert, CommandType.Text, parameterList.ToArray());
+            }
+        }
+        private bool Convert(CurrencyInfo item, string field, object value)
+        {
+            if (string.Compare(field, "CurrencyImage", true) != 0)
+                return false;
+            item.CurrencyImage = CurrencyStore.Common.Helper.ToBytes(value.ToString());
+            return true;
+        }
+    }
+}

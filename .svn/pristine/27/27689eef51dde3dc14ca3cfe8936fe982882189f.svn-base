@@ -1,0 +1,47 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using CurrencyStore.Collector.Remoting;
+using System.Diagnostics;
+using CurrencyStore.Utility;
+
+namespace Agent
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            AppDomain.CurrentDomain.UnhandledException +=new UnhandledExceptionEventHandler(CurrentDomain_UnhandledException);
+#if DEBUG
+            //if (args.Contains("--launch-debugger"))
+            //    Debugger.Launch();
+#endif
+            var con = new Oracle.DataAccess.Client.OracleConnection();
+
+            string url = string.Empty;
+            string id = string.Empty;
+            for (int i = 0; i < args.Length; i++)
+            {
+                var item = args[i];
+                if (item == "-url")
+                    url = args[i + 1];
+                else if (item == "-id")
+                    id = args[i + 1];
+                else
+                    continue;
+            }
+
+            RemoteAgent.Regist(id, url);
+
+            Console.WriteLine( "#" + id + " agent ready.");
+            Console.Read();
+        }
+
+
+        static void CurrentDomain_UnhandledException(object sender, UnhandledExceptionEventArgs e)
+        {
+            ElibExceptionHandler.Handle(e.ExceptionObject as Exception);
+        }
+    }
+}

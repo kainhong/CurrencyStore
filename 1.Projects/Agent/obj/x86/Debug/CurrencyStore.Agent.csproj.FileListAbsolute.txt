@@ -1,0 +1,12 @@
+H:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.CollectorHost\bin\Debug\agent\CurrencyStore.Agent.exe.config
+H:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.CollectorHost\bin\Debug\agent\CurrencyStore.Agent.exe
+H:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.CollectorHost\bin\Debug\agent\CurrencyStore.Agent.pdb
+H:\Working Folder\Project\CurrencyStore\1.Projects\Agent\obj\x86\Debug\ResolveAssemblyReference.cache
+H:\Working Folder\Project\CurrencyStore\1.Projects\Agent\obj\x86\Debug\CurrencyStore.Agent.exe
+H:\Working Folder\Project\CurrencyStore\1.Projects\Agent\obj\x86\Debug\CurrencyStore.Agent.pdb
+G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.CollectorHost\bin\Debug\agent\CurrencyStore.Agent.exe.config
+G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.CollectorHost\bin\Debug\agent\CurrencyStore.Agent.exe
+G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.CollectorHost\bin\Debug\agent\CurrencyStore.Agent.pdb
+G:\Working Folder\Project\CurrencyStore\1.Projects\Agent\obj\x86\Debug\CurrencyStore.Agent.csprojResolveAssemblyReference.cache
+G:\Working Folder\Project\CurrencyStore\1.Projects\Agent\obj\x86\Debug\CurrencyStore.Agent.exe
+G:\Working Folder\Project\CurrencyStore\1.Projects\Agent\obj\x86\Debug\CurrencyStore.Agent.pdb

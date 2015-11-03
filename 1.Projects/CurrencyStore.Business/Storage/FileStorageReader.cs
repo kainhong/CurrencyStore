@@ -1,0 +1,105 @@
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Text.RegularExpressions;
+using CurrencyStore.Entity;
+
+namespace CurrencyStore.Business.Storage
+{
+    public class FileStorageReader
+    {
+        Regex reg;
+        public string File { get; private set; }
+
+        public int Index { get; private set; }
+
+        DirectoryInfo directory;
+
+        public FileStorageReader(string folder)
+        {
+            directory = new DirectoryInfo(folder);
+            var expression = @"\("
+                + "'(?<a0>.*)?',"
+                + "'(?<a1>.*)?',"
+                + "'(?<a2>.*)?',"
+                + "'(?<a3>.*)?',"
+                + "'(?<a4>.*)?',"
+                + "'(?<a5>.*)?',"
+                + "'(?<a6>.*)?',"
+                + "'(?<a7>.*)?',"
+                + "'(?<a8>.*)?',"
+                + "'(?<a9>.*)?',"
+                + "'(?<a10>.*)?',"
+                + "'(?<a11>.*)?',"
+                + "'(?<a12>.*)?',"
+                + "'(?<a13>.*)?',"
+                + "'(?<a14>.*)?',"
+                + "'(?<a15>.*)?',"
+                + "'(?<a16>.*)?',"
+                + "'(?<a17>.*)?',"
+                + "'(?<a18>.*)?',"
+                + "'(?<a19>.*)?',"
+                + "'(?<a20>.*)?'"
+                + @"\)";
+            reg = new Regex(expression);
+        }
+
+        public IEnumerable<CurrencyInfo> Read()
+        {
+            if (!directory.Exists)
+                throw new DirectoryNotFoundException(directory.Name);
+            var files = directory.GetFiles("*.dat");
+            foreach (var file in files)
+            {
+                File = file.FullName;
+                Index = 0;
+                using (var sw = new StreamReader(file.OpenRead()))
+                {
+                    while (sw.Peek() > 0)
+                    {
+                        var line = sw.ReadLine();
+                        var item = GetCurrencyInfo(line);
+                        if (item != null)
+                            yield return item;
+                    }
+                    sw.Close();
+                }
+                file.MoveTo(file.FullName + ".bak");
+            }
+        }
+
+        private CurrencyInfo GetCurrencyInfo(string content)
+        {
+            var match = reg.Match(content);
+            if (!match.Success)
+                return null;
+            var item = new CurrencyInfo();
+            item.OrgId = Convert.ToInt32(match.Groups["a0"].Value);
+            item.BatchNumber =  match.Groups["a1"].Value;
+            item.DeviceNumber = (match.Groups["a2"].Value);
+            item.DeviceKindCode = Convert.ToByte(match.Groups["a3"].Value);
+            item.DeviceModelCode = Convert.ToByte(match.Groups["a4"].Value);
+            item.OperatorNumber = Convert.ToByte(match.Groups["a5"].Value);
+            item.OperateTime = Convert.ToDateTime(match.Groups["a6"].Value);
+            item.BusinessType = Convert.ToByte(match.Groups["a7"].Value);
+            item.ClientCardNumber = Convert.ToString(match.Groups["a8"].Value);
+            item.OrderNumber = Convert.ToInt32(match.Groups["a9"].Value);
+            item.CurrencyKindCode = Convert.ToByte(match.Groups["a10"].Value);
+            item.FaceAmount = Convert.ToInt16(match.Groups["a11"].Value);
+            item.CurrencyVersion = Convert.ToInt16(match.Groups["a12"].Value);
+            item.CurrencyType = Convert.ToByte(match.Groups["a13"].Value);
+            item.PortNumber = Convert.ToByte(match.Groups["a14"].Value);
+            item.IsSuspicious = Convert.ToByte(match.Groups["a15"].Value);
+            item.CurrencyNumber = (match.Groups["a16"].Value);
+            item.CurrencyImageType = Convert.ToByte(match.Groups["a17"].Value);
+            item.CurrencyImageString = (match.Groups["a18"].Value);
+            item.IsDuplicate = Convert.ToByte(match.Groups["a19"].Value);
+            item.IsUpload = Convert.ToByte(match.Groups["a20"].Value);
+            return item;
+        }
+
+
+    }
+}

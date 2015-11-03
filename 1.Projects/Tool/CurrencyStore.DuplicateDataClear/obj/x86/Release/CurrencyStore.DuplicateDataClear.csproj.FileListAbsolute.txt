@@ -1,0 +1,1 @@
+G:\Working Folder\Project\CurrencyStore\1.Projects\Tool\CurrencyStore.DuplicateDataClear\bin\Release\CurrencyStore.DuplicateDataClear.exe.config

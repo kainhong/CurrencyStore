@@ -1,0 +1,17 @@
+G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Utility\bin\Release\CurrencyStore.Utility.dll
+G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Utility\bin\Release\CurrencyStore.Utility.pdb
+G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Utility\bin\Release\Ionic.Zip.dll
+G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Utility\bin\Release\Microsoft.Practices.EnterpriseLibrary.Caching.dll
+G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Utility\bin\Release\Microsoft.Practices.EnterpriseLibrary.Common.dll
+G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Utility\bin\Release\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.dll
+G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Utility\bin\Release\Microsoft.Practices.EnterpriseLibrary.ExceptionHandling.Logging.dll
+G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Utility\bin\Release\Microsoft.Practices.EnterpriseLibrary.Logging.dll
+G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Utility\bin\Release\Microsoft.Practices.ServiceLocation.dll
+G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Utility\bin\Release\Microsoft.Practices.Unity.Configuration.dll
+G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Utility\bin\Release\Microsoft.Practices.Unity.dll
+G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Utility\bin\Release\NPOI.dll
+G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Utility\bin\Release\Microsoft.Practices.Unity.Interception.dll
+G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Utility\bin\Release\NPOI.xml
+G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Utility\obj\Release\CurrencyStore.Utility.csprojResolveAssemblyReference.cache
+G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Utility\obj\Release\CurrencyStore.Utility.dll
+G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Utility\obj\Release\CurrencyStore.Utility.pdb

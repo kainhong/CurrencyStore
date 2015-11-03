@@ -1,0 +1,3 @@
+G:\Working Folder\Project\CurrencyStore\1.Projects\Tool\CurrencyStore.DuplicateDataClear\bin\Debug\CurrencyStore.DuplicateDataClear.exe.config
+H:\Working Folder\Project\CurrencyStore\1.Projects\Tool\CurrencyStore.DuplicateDataClear\bin\Debug\CurrencyStore.DuplicateDataClear.exe.config
+\\tsclient\H\Working Folder\Project\CurrencyStore\1.Projects\Tool\CurrencyStore.DuplicateDataClear\bin\Debug\CurrencyStore.DuplicateDataClear.exe.config

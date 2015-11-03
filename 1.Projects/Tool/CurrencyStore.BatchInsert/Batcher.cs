@@ -1,0 +1,178 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using CurrencyStore.Entity;
+using CurrencyStore.Service.Interface;
+using CurrencyStore.Utility;
+
+namespace CurrencyStore.BatchInsert
+{
+    public class Batcher
+    {
+        ICurrencyService currencyService = ServiceFactory.GetService<ICurrencyService>();
+
+        private int BatchCount { get; set; }
+        private int TargetCurrencyCount { get; set; }
+        private int TotalBatch { get; set; }
+        private int HourBatch { get; set; }
+        private int CurrentBatch { get; set; }
+        public int RealInsertCurrencyCount { get; private set; }
+        private List<CurrencyInfo> Value { get; set; }
+
+        public Batcher(int batchCount, int targetCurrencyCount)
+        {
+            this.BatchCount = batchCount;
+            this.TargetCurrencyCount = targetCurrencyCount;
+
+            this.TotalBatch = this.TargetCurrencyCount / this.BatchCount;
+
+            if (this.TargetCurrencyCount % this.BatchCount != 0)
+            {
+                this.TotalBatch += 1;
+            }
+
+            this.HourBatch = this.TotalBatch / 10;
+
+            this.CreateInesrtData(SourceData.Value, this.BatchCount);
+        }
+
+        public void Insert()
+        {
+            this.CurrentBatch = 1;
+
+            for (; this.CurrentBatch <= this.TotalBatch; this.CurrentBatch += 1)
+            {
+                if (this.CurrentBatch == this.HourBatch * 0 + 1)
+                {
+                    DateTime nowTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 8, DateTime.Now.Minute, DateTime.Now.Second);
+
+                    this.UpdateInesrtData(nowTime);
+                }
+
+                if (this.CurrentBatch == this.HourBatch * 1 + 1)
+                {
+                    DateTime nowTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 9, DateTime.Now.Minute, DateTime.Now.Second);
+
+                    this.UpdateInesrtData(nowTime);
+                }
+
+                if (this.CurrentBatch == this.HourBatch * 2 + 1)
+                {
+                    DateTime nowTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 10, DateTime.Now.Minute, DateTime.Now.Second);
+
+                    this.UpdateInesrtData(nowTime);
+                }
+
+                if (this.CurrentBatch == this.HourBatch * 3 + 1)
+                {
+                    DateTime nowTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 11, DateTime.Now.Minute, DateTime.Now.Second);
+
+                    this.UpdateInesrtData(nowTime);
+                }
+
+                if (this.CurrentBatch == this.HourBatch * 4 + 1)
+                {
+                    DateTime nowTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 12, DateTime.Now.Minute, DateTime.Now.Second);
+
+                    this.UpdateInesrtData(nowTime);
+                }
+
+                if (this.CurrentBatch == this.HourBatch * 5 + 1)
+                {
+                    DateTime nowTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 13, DateTime.Now.Minute, DateTime.Now.Second);
+
+                    this.UpdateInesrtData(nowTime);
+                }
+
+                if (this.CurrentBatch == this.HourBatch * 6 + 1)
+                {
+                    DateTime nowTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 14, DateTime.Now.Minute, DateTime.Now.Second);
+
+                    this.UpdateInesrtData(nowTime);
+                }
+
+                if (this.CurrentBatch == this.HourBatch * 7 + 1)
+                {
+                    DateTime nowTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 15, DateTime.Now.Minute, DateTime.Now.Second);
+
+                    this.UpdateInesrtData(nowTime);
+                }
+
+                if (this.CurrentBatch == this.HourBatch * 8 + 1)
+                {
+                    DateTime nowTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 16, DateTime.Now.Minute, DateTime.Now.Second);
+
+                    this.UpdateInesrtData(nowTime);
+                }
+
+                if (this.CurrentBatch == this.HourBatch * 9 + 1)
+                {
+                    DateTime nowTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 17, DateTime.Now.Minute, DateTime.Now.Second);
+
+                    this.UpdateInesrtData(nowTime);
+                }
+
+                if (this.CurrentBatch == this.HourBatch * 10 + 1)
+                {
+                    DateTime nowTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 18, DateTime.Now.Minute, DateTime.Now.Second);
+
+                    this.UpdateInesrtData(nowTime);
+                }
+
+                if (this.CurrentBatch == this.HourBatch * 11 + 1)
+                {
+                    DateTime nowTime = new DateTime(DateTime.Now.Year, DateTime.Now.Month, DateTime.Now.Day, 19, DateTime.Now.Minute, DateTime.Now.Second);
+
+                    this.UpdateInesrtData(nowTime);
+                }
+
+                currencyService.BatchSave_Info(this.Value);
+
+                this.RealInsertCurrencyCount += this.BatchCount;
+
+                DataCounter.AddCurrency(this.BatchCount);
+            }
+        }
+
+        private void CreateInesrtData(CurrencyInfo sourceData, int currencyCount)
+        {
+            this.Value = new List<CurrencyInfo>();
+
+            for (int i = 0; i < currencyCount; i++)
+            {
+                this.Value.Add(new CurrencyInfo()
+                {
+                    OrgId = sourceData.OrgId,
+                    DeviceNumber = sourceData.DeviceNumber,
+                    DeviceKindCode = sourceData.DeviceKindCode,
+                    DeviceModelCode = sourceData.DeviceModelCode,
+                    OperatorNumber = sourceData.OperatorNumber,
+                    OperateTime = sourceData.OperateTime,
+                    BusinessType = sourceData.BusinessType,
+                    ClientCardNumber = sourceData.ClientCardNumber,
+                    BatchNumber = sourceData.BatchNumber,
+                    OrderNumber = sourceData.OrderNumber,
+                    CurrencyKindCode = sourceData.CurrencyKindCode,
+                    FaceAmount = sourceData.FaceAmount,
+                    CurrencyVersion = sourceData.CurrencyVersion,
+                    CurrencyType = sourceData.CurrencyType,
+                    PortNumber = sourceData.PortNumber,
+                    IsSuspicious = sourceData.IsSuspicious,
+                    CurrencyNumber = sourceData.CurrencyNumber,
+                    CurrencyImageType = sourceData.CurrencyImageType,
+                    CurrencyImage = sourceData.CurrencyImage
+                });
+            }
+        }
+
+        private void UpdateInesrtData(DateTime operateTime)
+        {
+            foreach (var item in this.Value)
+            {
+                item.OperateTime = operateTime;
+            }
+        }
+    }
+}

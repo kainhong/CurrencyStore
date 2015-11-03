@@ -1,0 +1,144 @@
+----------------------------------------
+Timestamp: 2013-06-29 03:01:28
+Message: HandlingInstanceID: 558e01b5-059b-4dd4-b5f5-6e18426612da
+An exception of type 'System.Reflection.TargetInvocationException' occurred and was caught.
+-------------------------------------------------------------------------------------------
+06/29/2013 11:01:28
+Type : System.Reflection.TargetInvocationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : Exception has been thrown by the target of an invocation.
+Source : mscorlib
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.Object GetValue(System.Reflection.RtFieldInfo, System.Object, System.RuntimeType, System.RuntimeType, Boolean ByRef)
+HResult : -2146232828
+Stack Trace :    at System.RuntimeFieldHandle.GetValue(RtFieldInfo field, Object instance, RuntimeType fieldType, RuntimeType declaringType, Boolean& domainInitialized)
+   at System.Reflection.RtFieldInfo.UnsafeGetValue(Object obj)
+   at System.Reflection.RtFieldInfo.InternalGetValue(Object obj, StackCrawlMark& stackMark)
+   at System.Reflection.RtFieldInfo.GetValue(Object obj)
+   at System.Data.Common.DbProviderFactories.GetFactory(DataRow providerRow)
+   at System.Data.Common.DbProviderFactories.GetFactory(String providerInvariantName)
+   at CurrencyStore.Repository.DbHelper.GetDbConnection(String name) in G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Repository\DbHelper.cs:line 39
+   at CurrencyStore.Repository.DbHelper.ExecuteList[T](String script, Func`4 predicate, CommandType cmdType, DbParameter[] params) in G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Repository\DbHelper.cs:line 174
+   at CurrencyStore.Repository.DbHelper.ExecuteList[T](String script, CommandType cmdType, DbParameter[] params) in G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Repository\DbHelper.cs:line 168
+   at CurrencyStore.Repository.Oracle.DeviceInfoRepository.GetAllList() in G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Repository\Oracle\DeviceInfoRepository.cs:line 182
+   at CurrencyStore.Service.DeviceService.GetAllList_Info() in G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Service\DeviceService.cs:line 118
+   at CurrencyStore.Business.DeviceCache.LoadItems() in G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Business\DeviceCache.cs:line 19
+   at CurrencyStore.Business.CacheBase`1.Init() in G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Business\CacheBase.cs:line 23
+   at CurrencyStore.Collector.SocketServer.Start() in G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Collector\SocketServer.cs:line 59
+   at CurrencyStore.Application.Program.Main(String[] args) in G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.CollectorHost\Program.cs:line 37
+   at System.AppDomain._nExecuteAssembly(RuntimeAssembly assembly, String[] args)
+   at Microsoft.VisualStudio.HostingProcess.HostProc.RunUsersAssembly()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.ThreadHelper.ThreadStart()
+
+Additional Info:
+
+MachineName : KAIN-PC
+TimeStamp : 2013/6/29 3:01:28
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : CurrencyStore.CollectorHost.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : kain-PC\kain
+	Inner Exception
+	---------------
+	Type : System.TypeInitializationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : The type initializer for 'Oracle.DataAccess.Client.OracleClientFactory' threw an exception.
+	Source : 
+	Help link : 
+	TypeName : Oracle.DataAccess.Client.OracleClientFactory
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : 
+	HResult : -2146233036
+	Stack Trace : The stack trace is unavailable.
+		Inner Exception
+		---------------
+		Type : Oracle.DataAccess.Client.OracleException, Oracle.DataAccess, Version=4.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342
+		Message : The provider is not compatible with the version of Oracle client
+		Source : Oracle Data Provider for .NET
+		Help link : 
+		Errors : Oracle.DataAccess.Client.OracleErrorCollection
+		DataSource : 
+		Procedure : 
+		Number : -11
+		ErrorCode : -2147467259
+		Data : System.Collections.ListDictionaryInternal
+		TargetSite : Void Initialize()
+		HResult : -2147467259
+		Stack Trace :    at Oracle.DataAccess.Client.OracleInit.Initialize()
+		   at Oracle.DataAccess.Client.OracleClientFactory..cctor()
+
+
+
+----------------------------------------
+----------------------------------------
+Timestamp: 2013-06-29 03:02:47
+Message: HandlingInstanceID: 83036834-1cad-4a5e-ac0b-cef0880b5472
+An exception of type 'System.TypeInitializationException' occurred and was caught.
+----------------------------------------------------------------------------------
+06/29/2013 11:02:46
+Type : System.TypeInitializationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : The type initializer for 'CurrencyStore.Business.SystemParameter' threw an exception.
+Source : CurrencyStore.Business
+Help link : 
+TypeName : CurrencyStore.Business.SystemParameter
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.String get_BlacklistVersion()
+HResult : -2146233036
+Stack Trace :    at CurrencyStore.Business.SystemParameter.get_BlacklistVersion()
+   at CurrencyStore.Business.BlackTableHelper.GetVersion() in G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Business\BlackTable.cs:line 71
+   at CurrencyStore.Business.BlackTableHelper.Load() in G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Business\BlackTable.cs:line 36
+   at CurrencyStore.Collector.SocketServer.Start() in G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Collector\SocketServer.cs:line 59
+   at CurrencyStore.Application.Program.Main(String[] args) in G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.CollectorHost\Program.cs:line 37
+   at System.AppDomain._nExecuteAssembly(RuntimeAssembly assembly, String[] args)
+   at Microsoft.VisualStudio.HostingProcess.HostProc.RunUsersAssembly()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.ThreadHelper.ThreadStart()
+
+Additional Info:
+
+MachineName : KAIN-PC
+TimeStamp : 2013/6/29 3:02:46
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : CurrencyStore.CollectorHost.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : kain-PC\kain
+	Inner Exception
+	---------------
+	Type : System.TypeInitializationException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+	Message : The type initializer for 'Oracle.DataAccess.Client.OracleParameter' threw an exception.
+	Source : Oracle.DataAccess
+	Help link : 
+	TypeName : Oracle.DataAccess.Client.OracleParameter
+	Data : System.Collections.ListDictionaryInternal
+	TargetSite : Void .ctor(System.String, System.Object)
+	HResult : -2146233036
+	Stack Trace :    at Oracle.DataAccess.Client.OracleParameter..ctor(String parameterName, Object obj)
+	   at CurrencyStore.Repository.Oracle.BasicParameterRepository.CheckExists(BasicParameter objBasicParameter) in G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Repository\Oracle\BasicParameterRepository.cs:line 26
+	   at CurrencyStore.Service.BasicService.CheckExists_Parameter(BasicParameter objBasicParameter) in G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Service\BasicService.cs:line 86
+	   at CurrencyStore.Business.SystemParameter.Init() in G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Business\SystemParameter.cs:line 87
+	   at CurrencyStore.Business.SystemParameter..cctor() in G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Business\SystemParameter.cs:line 19
+
+		Inner Exception
+		---------------
+		Type : Oracle.DataAccess.Client.OracleException, Oracle.DataAccess, Version=4.112.3.0, Culture=neutral, PublicKeyToken=89b483f429c47342
+		Message : The provider is not compatible with the version of Oracle client
+		Source : Oracle Data Provider for .NET
+		Help link : 
+		Errors : Oracle.DataAccess.Client.OracleErrorCollection
+		DataSource : 
+		Procedure : 
+		Number : -11
+		ErrorCode : -2147467259
+		Data : System.Collections.ListDictionaryInternal
+		TargetSite : Void Initialize()
+		HResult : -2147467259
+		Stack Trace :    at Oracle.DataAccess.Client.OracleInit.Initialize()
+		   at Oracle.DataAccess.Client.OracleParameter..cctor()
+
+
+
+----------------------------------------

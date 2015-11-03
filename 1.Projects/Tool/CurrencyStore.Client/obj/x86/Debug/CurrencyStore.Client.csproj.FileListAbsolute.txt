@@ -1,0 +1,12 @@
+H:\Working Folder\Project\CurrencyStore\1.Projects\Tool\CurrencyStore.Client\bin\Debug\CurrencyStore.Client.exe.config
+H:\Working Folder\Project\CurrencyStore\1.Projects\Tool\CurrencyStore.Client\bin\Debug\CurrencyStore.Client.exe
+H:\Working Folder\Project\CurrencyStore\1.Projects\Tool\CurrencyStore.Client\bin\Debug\CurrencyStore.Client.pdb
+H:\Working Folder\Project\CurrencyStore\1.Projects\Tool\CurrencyStore.Client\bin\Debug\CurrencyStore.DataPackage.dll
+H:\Working Folder\Project\CurrencyStore\1.Projects\Tool\CurrencyStore.Client\bin\Debug\CurrencyStore.DataPackage.pdb
+H:\Working Folder\Project\CurrencyStore\1.Projects\Tool\CurrencyStore.Client\obj\x86\Debug\ResolveAssemblyReference.cache
+H:\Working Folder\Project\CurrencyStore\1.Projects\Tool\CurrencyStore.Client\obj\x86\Debug\CurrencyStore.Client.frmMain.resources
+H:\Working Folder\Project\CurrencyStore\1.Projects\Tool\CurrencyStore.Client\obj\x86\Debug\CurrencyStore.Client.Properties.Resources.resources
+H:\Working Folder\Project\CurrencyStore\1.Projects\Tool\CurrencyStore.Client\obj\x86\Debug\GenerateResource.read.1.tlog
+H:\Working Folder\Project\CurrencyStore\1.Projects\Tool\CurrencyStore.Client\obj\x86\Debug\GenerateResource.write.1.tlog
+H:\Working Folder\Project\CurrencyStore\1.Projects\Tool\CurrencyStore.Client\obj\x86\Debug\CurrencyStore.Client.exe
+H:\Working Folder\Project\CurrencyStore\1.Projects\Tool\CurrencyStore.Client\obj\x86\Debug\CurrencyStore.Client.pdb

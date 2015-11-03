@@ -1,0 +1,9 @@
+G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Entity\bin\Debug\CurrencyStore.Entity.dll
+G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Entity\bin\Debug\CurrencyStore.Entity.pdb
+G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Entity\obj\Debug\CurrencyStore.Entity.dll
+G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Entity\obj\Debug\CurrencyStore.Entity.pdb
+H:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Entity\bin\Debug\CurrencyStore.Entity.dll
+H:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Entity\bin\Debug\CurrencyStore.Entity.pdb
+H:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Entity\obj\Debug\ResolveAssemblyReference.cache
+H:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Entity\obj\Debug\CurrencyStore.Entity.dll
+H:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Entity\obj\Debug\CurrencyStore.Entity.pdb

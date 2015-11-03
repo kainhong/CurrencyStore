@@ -1,0 +1,36 @@
+----------------------------------------
+Timestamp: 2013-07-10 07:58:21
+Message: HandlingInstanceID: 89ee942b-67c9-40e8-a657-ccaad088e37a
+An exception of type 'System.NullReferenceException' occurred and was caught.
+-----------------------------------------------------------------------------
+07/10/2013 15:58:21
+Type : System.NullReferenceException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : 未将对象引用设置到对象的实例。
+Source : CurrencyStore.Business
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.String get_BlacklistVersion()
+Stack Trace :    在 CurrencyStore.Business.SystemParameter.get_BlacklistVersion() 位置 H:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Business\SystemParameter.cs:行号 30
+   在 CurrencyStore.Business.BlackTableHelper.GetVersion() 位置 H:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Business\BlackTable.cs:行号 71
+   在 CurrencyStore.Business.BlackTableHelper.Load() 位置 H:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Business\BlackTable.cs:行号 36
+   在 CurrencyStore.Collector.SocketServer.Start() 位置 H:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Collector\SocketServer.cs:行号 59
+   在 CurrencyStore.Application.Program.Main(String[] args) 位置 H:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.CollectorHost\Program.cs:行号 44
+   在 System.AppDomain._nExecuteAssembly(RuntimeAssembly assembly, String[] args)
+   在 System.AppDomain.ExecuteAssembly(String assemblyFile, Evidence assemblySecurity, String[] args)
+   在 Microsoft.VisualStudio.HostingProcess.HostProc.RunUsersAssembly()
+   在 System.Threading.ThreadHelper.ThreadStart_Context(Object state)
+   在 System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean ignoreSyncCtx)
+   在 System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)
+   在 System.Threading.ThreadHelper.ThreadStart()
+
+Additional Info:
+
+MachineName : SZCKPC198
+TimeStamp : 2013-7-10 7:58:21
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : CurrencyStore.CollectorHost.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : YOUGOU\hong.l
+
+
+----------------------------------------

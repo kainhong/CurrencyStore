@@ -1,0 +1,148 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.UI;
+using System.Web.UI.WebControls;
+using CurrencyStore.Business;
+using CurrencyStore.Common;
+using CurrencyStore.Common.ExtensionMethod;
+using CurrencyStore.Common.File;
+using CurrencyStore.DataConvert;
+using CurrencyStore.Entity;
+using CurrencyStore.Services.Interface;
+using CurrencyStore.Web.App_Class;
+
+namespace CurrencyStore.Web.App_Page.Service
+{
+    public partial class Stat_Device_List : ServiceBasePage
+    {
+        private string OrgId
+        {
+            get { return this.ViewState["OrgId"] as string; }
+            set { this.ViewState["OrgId"] = value; }
+        }
+        public string DeviceKind
+        {
+            get { return this.ViewState["DeviceKind"] as string; }
+            set { this.ViewState["DeviceKind"] = value; }
+        }
+        public string DeviceModel
+        {
+            get { return this.ViewState["DeviceModel"] as string; }
+            set { this.ViewState["DeviceModel"] = value; }
+        }
+
+        protected new void Page_Load(object sender, EventArgs e)
+        {
+            base.Page_Load(sender, e);
+
+            if (!this.IsPostBack)
+            {
+                this.SetOrgSearchByPermission(this.txtOrgName, this.hfOrgId);
+
+                this.BindDeviceKind();
+                this.BindDeviceModel();
+
+                this.btnSearch_Click(null, null);
+            }
+        }
+
+        protected void btnExport_Click(object sender, EventArgs e)
+        {
+            IStatService service = ServiceFactory.GetService<IStatService>();
+
+            var statDeviceList = service.GetList_Device(this.OrgId.ToInt(0), this.OrgId.ToInt(0).ToString().GetOrgFullPath(), this.DeviceKind.ToInt(0), this.DeviceModel.ToInt(0), null);
+
+            DataTable temp = this.ToDataTable(statDeviceList);
+
+            string filePath = FileHelper.ConvertPath("~/App_File/Export/" + FileHelper.GetFileNamebyGuid(".xls"));
+
+            temp.SaveToExcel(filePath);
+
+            FileHelper.DownloadFile(filePath, DateTime.Now.ToString("yyyy-MM-dd") + ".xls", "application/ms-excel", true);
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            this.OrgId = this.hfOrgId.Value.Trim();
+            this.DeviceKind = this.ddlDeviceKind.SelectedValue;
+            this.DeviceModel = this.ddlDeviceModel.SelectedValue;
+
+            this.objANP.CurrentPageIndex = 1;
+        }
+
+        protected void Page_PreRender(object sender, EventArgs e)
+        {
+            this.txtOrgName.Text = this.OrgId.GetOrgName(true);
+            this.ddlDeviceKind.SelectedValue = this.DeviceKind;
+            this.ddlDeviceModel.SelectedValue = this.DeviceModel;
+
+            this.BindDeviceStatList();
+
+            this.SetSubmitKey();
+        }
+
+        private void BindDeviceKind()
+        {
+            var allDictList = ServiceFactory.GetService<IBasicService>().GetList_Dictionary();
+
+            this.ddlDeviceKind.DataTextField = "DictValue";
+            this.ddlDeviceKind.DataValueField = "DictKey";
+            this.ddlDeviceKind.DataSource = (from item in allDictList where item.DictKind == (sbyte)BasicDictionary.DictKindEnum.DeviceKind select item).ToList();
+            this.ddlDeviceKind.DataBind();
+
+            this.ddlDeviceKind.Items.Insert(0, new ListItem("全部", "0"));
+        }
+
+        private void BindDeviceModel()
+        {
+            var allDictList = ServiceFactory.GetService<IBasicService>().GetList_Dictionary();
+
+            this.ddlDeviceModel.DataTextField = "DictValue";
+            this.ddlDeviceModel.DataValueField = "DictKey";
+            this.ddlDeviceModel.DataSource = (from item in allDictList where item.DictKind == (sbyte)BasicDictionary.DictKindEnum.DeviceModel select item).ToList();
+            this.ddlDeviceModel.DataBind();
+
+            this.ddlDeviceModel.Items.Insert(0, new ListItem("全部", "0"));
+        }
+
+        private void BindDeviceStatList()
+        {
+            IStatService service = ServiceFactory.GetService<IStatService>();
+
+            this.Paging.CurrentPageIndex = this.objANP.CurrentPageIndex;
+            this.Paging.PageSize = this.objANP.PageSize;
+
+            this.gvList.DataSource = service.GetList_Device(this.OrgId.ToInt(0), this.OrgId.ToInt(0).ToString().GetOrgFullPath(), this.DeviceKind.ToInt(0), this.DeviceModel.ToInt(0), this.Paging);
+            this.gvList.DataBind();
+
+            this.objANP.RecordCount = this.Paging.RowCount.Value;
+        }
+
+        private DataTable ToDataTable(List<DeviceStatInfo> statDeviceList)
+        {
+            DataTable result = new DataTable("网点设备统计");
+
+            result.Columns.Add("网点机构_25", typeof(string));
+            result.Columns.Add("设备类别_10", typeof(string));
+            result.Columns.Add("设备型号_10", typeof(string));
+            result.Columns.Add("设备数量_10", typeof(string));
+
+            foreach (var item in statDeviceList)
+            {
+                DataRow objDR = result.NewRow();
+
+                objDR[0] = item.OrgId.ToString().GetOrgName();
+                objDR[1] = item.KindCode.ToString().GetDictValue((int)BasicDictionary.DictKindEnum.DeviceKind);
+                objDR[2] = item.ModelCode.ToString().GetDictValue((int)BasicDictionary.DictKindEnum.DeviceModel);
+                objDR[3] = item.Count;
+
+                result.Rows.Add(objDR);
+            }
+
+            return result;
+        }
+    }
+}

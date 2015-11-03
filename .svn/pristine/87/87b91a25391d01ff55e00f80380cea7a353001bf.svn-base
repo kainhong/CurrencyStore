@@ -1,0 +1,86 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.Concurrent;
+using System.Linq;
+using System.Text;
+using CurrencyStore.Utility;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace CurrencyStore.Collector
+{
+    public class PoolTest
+    {
+        public static ConcurrentDictionary<string, DataTest> PoolList;
+        public static ConcurrentQueue<ConcurrentDictionary<string, DataTest>> DataQueue;
+
+        static PoolTest()
+        {
+            PoolList = new ConcurrentDictionary<string, DataTest>();
+            DataQueue = new ConcurrentQueue<ConcurrentDictionary<string, DataTest>>();
+
+            Run();
+            Run2();
+        }
+
+        public static void Run()
+        {
+            Task.Factory.StartNew(() =>
+            {
+                while (true)
+                {
+                    Thread.Sleep(15000);
+
+                    var dataList = Interlocked.Exchange<ConcurrentDictionary<string, DataTest>>(ref PoolList, new ConcurrentDictionary<string, DataTest>());
+
+                    DataQueue.Enqueue(dataList);                    
+                }
+            });
+        }
+
+        public static void Run2()
+        {
+            Task.Factory.StartNew(() =>
+            {
+                while (true)
+                {
+                    Thread.Sleep(100);
+
+                    ConcurrentDictionary<string, DataTest> data = null;
+
+                    if (DataQueue.TryDequeue(out data))
+                    {
+                        Parallel.ForEach(data, item => item.Value.Commit(item.Key));
+                    }
+                }
+            });            
+        }
+    }
+
+    public class DataTest
+    {
+        private List<Entity.CurrencyInfo> CurrencyQueue { get; set; }
+
+        public DataTest()
+        {
+            this.CurrencyQueue = new List<Entity.CurrencyInfo>();
+        }
+
+        public void Add(Entity.CurrencyInfo ci)
+        {
+            this.CurrencyQueue.Add(ci);
+        }
+
+        public void Commit(string deviceNumber)
+        {
+            if (this.CurrencyQueue.Count > 0)
+            {
+                FileWriter.Write(deviceNumber, CurrencyQueue);
+
+                this.CurrencyQueue.Clear();
+
+                this.CurrencyQueue = null;
+            }
+        }
+    }
+}

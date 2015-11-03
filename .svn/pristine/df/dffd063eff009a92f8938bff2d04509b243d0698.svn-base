@@ -1,0 +1,67 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.Concurrent;
+using System.Linq;
+using System.Text;
+using CurrencyStore.Utility;
+using System.Threading;
+using System.Threading.Tasks;
+
+namespace CurrencyStore.Collector
+{
+    public class PoolTest
+    {
+        public static ConcurrentDictionary<string, DataTest> PoolList;
+
+        static PoolTest()
+        {
+            PoolList = new ConcurrentDictionary<string, DataTest>();
+
+            Run();
+        }
+
+        public static void Run()
+        {
+            Task.Factory.StartNew(() =>
+            {
+                while (true)
+                {
+                    Thread.Sleep(10000);
+
+                    var dataList = Interlocked.Exchange<ConcurrentDictionary<string, DataTest>>(ref PoolList, new ConcurrentDictionary<string, DataTest>());
+
+                    Parallel.ForEach(dataList, item => item.Value.Commit());
+                }
+            });
+        }
+    }
+
+    public class DataTest
+    {
+        private CurrencyStore.Service.Interface.ICurrencyService service = ServiceFactory.GetService<CurrencyStore.Service.Interface.ICurrencyService>();
+
+        private List<Entity.CurrencyInfo> CurrencyQueue { get; set; }
+
+        public DataTest()
+        {
+            this.CurrencyQueue = new List<Entity.CurrencyInfo>();
+        }
+
+        public void Add(Entity.CurrencyInfo ci)
+        {
+            this.CurrencyQueue.Add(ci);
+        }
+
+        public void Commit()
+        {
+            if (this.CurrencyQueue.Count > 0)
+            {
+                service.BatchSave_Info(CurrencyQueue);
+
+                this.CurrencyQueue.Clear();
+
+                this.CurrencyQueue = null;
+            }
+        }
+    }
+}

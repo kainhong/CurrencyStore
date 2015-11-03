@@ -1,0 +1,5 @@
+H:\Working Folder\Project\CurrencyStore\1.Projects\Tool\CurrencyStore.DataPackage\bin\Debug\CurrencyStore.DataPackage.dll
+H:\Working Folder\Project\CurrencyStore\1.Projects\Tool\CurrencyStore.DataPackage\bin\Debug\CurrencyStore.DataPackage.pdb
+H:\Working Folder\Project\CurrencyStore\1.Projects\Tool\CurrencyStore.DataPackage\obj\Debug\ResolveAssemblyReference.cache
+H:\Working Folder\Project\CurrencyStore\1.Projects\Tool\CurrencyStore.DataPackage\obj\Debug\CurrencyStore.DataPackage.dll
+H:\Working Folder\Project\CurrencyStore\1.Projects\Tool\CurrencyStore.DataPackage\obj\Debug\CurrencyStore.DataPackage.pdb

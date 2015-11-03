@@ -1,0 +1,36 @@
+----------------------------------------
+Timestamp: 2013-06-29 03:09:30
+Message: HandlingInstanceID: 0be083b4-95aa-4cb6-82fd-2762d16b3022
+An exception of type 'System.NullReferenceException' occurred and was caught.
+-----------------------------------------------------------------------------
+06/29/2013 11:09:30
+Type : System.NullReferenceException, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089
+Message : Object reference not set to an instance of an object.
+Source : CurrencyStore.Business
+Help link : 
+Data : System.Collections.ListDictionaryInternal
+TargetSite : System.String get_BlacklistVersion()
+HResult : -2147467261
+Stack Trace :    at CurrencyStore.Business.SystemParameter.get_BlacklistVersion() in G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Business\SystemParameter.cs:line 30
+   at CurrencyStore.Business.BlackTableHelper.GetVersion() in G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Business\BlackTable.cs:line 71
+   at CurrencyStore.Business.BlackTableHelper.Load() in G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Business\BlackTable.cs:line 36
+   at CurrencyStore.Collector.SocketServer.Start() in G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Collector\SocketServer.cs:line 59
+   at CurrencyStore.Application.Program.Main(String[] args) in G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.CollectorHost\Program.cs:line 36
+   at System.AppDomain._nExecuteAssembly(RuntimeAssembly assembly, String[] args)
+   at Microsoft.VisualStudio.HostingProcess.HostProc.RunUsersAssembly()
+   at System.Threading.ExecutionContext.RunInternal(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state, Boolean preserveSyncCtx)
+   at System.Threading.ExecutionContext.Run(ExecutionContext executionContext, ContextCallback callback, Object state)
+   at System.Threading.ThreadHelper.ThreadStart()
+
+Additional Info:
+
+MachineName : KAIN-PC
+TimeStamp : 2013/6/29 3:09:30
+FullName : Microsoft.Practices.EnterpriseLibrary.ExceptionHandling, Version=5.0.414.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35
+AppDomainName : CurrencyStore.CollectorHost.vshost.exe
+ThreadIdentity : 
+WindowsIdentity : kain-PC\kain
+
+
+----------------------------------------

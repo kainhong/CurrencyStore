@@ -1,0 +1,4 @@
+G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Entity\bin\Release\CurrencyStore.Entity.dll
+G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Entity\bin\Release\CurrencyStore.Entity.pdb
+G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Entity\obj\Release\CurrencyStore.Entity.dll
+G:\Working Folder\Project\CurrencyStore\1.Projects\CurrencyStore.Entity\obj\Release\CurrencyStore.Entity.pdb

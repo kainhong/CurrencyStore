@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C0916042-68E7-4DBE-8EFF-AD7098F80107}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CurrencyStore.Repository</RootNamespace>
+    <AssemblyName>CurrencyStore.Repository</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="MySql.Data">
+      <HintPath>..\..\2.Library\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Oracle.DataAccess">
+      <HintPath>..\..\2.Library\${Platform}\Oracle.DataAccess.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="DbHelper.cs" />
+    <Compile Include="DbProvider.cs" />
+    <Compile Include="DbQueryDetailHelper.cs" />
+    <Compile Include="IBasicDictionaryRepository.cs" />
+    <Compile Include="IBasicOrganizationRepository.cs" />
+    <Compile Include="IBasicParameterRepository.cs" />
+    <Compile Include="ICurrencyBlacklistRepository.cs" />
+    <Compile Include="ICurrencyExportRepository.cs" />
+    <Compile Include="ICurrencyInfoRepository.cs" />
+    <Compile Include="ICurrencyStatInfoRepository.cs" />
+    <Compile Include="IDeviceConnectionRepository.cs" />
+    <Compile Include="IDeviceInfoRepository.cs" />
+    <Compile Include="IDeviceStatInfoRepository.cs" />
+    <Compile Include="IOrganizationStatDetailInfoRepository.cs" />
+    <Compile Include="IOrganizationStatInfoRepository.cs" />
+    <Compile Include="IUserInfoRepository.cs" />
+    <Compile Include="IUserLoginRepository.cs" />
+    <Compile Include="IUserPermissionRepository.cs" />
+    <Compile Include="IUserRolePermissionRepository.cs" />
+    <Compile Include="IUserRoleRepository.cs" />
+    <Compile Include="MySql\BasicDictionaryRepository.cs" />
+    <Compile Include="MySql\BasicOrganizationRepository.cs" />
+    <Compile Include="MySql\BasicParameterRepository.cs" />
+    <Compile Include="MySql\CurrencyBlacklistRepository.cs" />
+    <Compile Include="MySql\CurrencyExportRepository.cs" />
+    <Compile Include="MySql\CurrencyInfoRepository.cs" />
+    <Compile Include="MySql\CurrencyStatInfoRepository.cs" />
+    <Compile Include="MySql\DeviceConnectionRepository.cs" />
+    <Compile Include="MySql\DeviceInfoRepository.cs" />
+    <Compile Include="MySql\DeviceStatInfoRepository.cs" />
+    <Compile Include="MySql\MySqlDbProvider.cs" />
+    <Compile Include="MySql\OrganizationStatDetailInfoRepository.cs" />
+    <Compile Include="MySql\OrganizationStatInfoRepository.cs" />
+    <Compile Include="MySql\UserInfoRepository.cs" />
+    <Compile Include="MySql\UserLoginRepository.cs" />
+    <Compile Include="MySql\UserPermissionRepository.cs" />
+    <Compile Include="MySql\UserRolePermissionRepository.cs" />
+    <Compile Include="MySql\UserRoleRepository.cs" />
+    <Compile Include="ObjectDbDataReader.cs" />
+    <Compile Include="Oracle\BasicDictionaryRepository.cs" />
+    <Compile Include="Oracle\BasicOrganizationRepository.cs" />
+    <Compile Include="Oracle\BasicParameterRepository.cs" />
+    <Compile Include="Oracle\BulkCopy.cs" />
+    <Compile Include="Oracle\CurrencyBlacklistRepository.cs" />
+    <Compile Include="Oracle\CurrencyExportRepository.cs" />
+    <Compile Include="Oracle\CurrencyInfoRepository.cs" />
+    <Compile Include="Oracle\CurrencyStatInfoRepository.cs" />
+    <Compile Include="Oracle\DeviceConnectionRepository.cs" />
+    <Compile Include="Oracle\DeviceInfoRepository.cs" />
+    <Compile Include="Oracle\DeviceStatInfoRepository.cs" />
+    <Compile Include="Oracle\OrcaleDbProvider.cs" />
+    <Compile Include="Oracle\OrganizationStatDetailInfoRepository.cs" />
+    <Compile Include="Oracle\OrganizationStatInfoRepository.cs" />
+    <Compile Include="Oracle\UserInfoRepository.cs" />
+    <Compile Include="Oracle\UserLoginRepository.cs" />
+    <Compile Include="Oracle\UserPermissionRepository.cs" />
+    <Compile Include="Oracle\UserRolePermissionRepository.cs" />
+    <Compile Include="Oracle\UserRoleRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\CurrencyStore.Common\CurrencyStore.Common.csproj">
+      <Project>{DDAC0530-4A56-4B9D-8EB2-0467C976D748}</Project>
+      <Name>CurrencyStore.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CurrencyStore.Entity\CurrencyStore.Entity.csproj">
+      <Project>{079F512B-3D85-4C80-9AF1-49B45D9ECDE5}</Project>
+      <Name>CurrencyStore.Entity</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
